@@ -4,3 +4,6 @@ div.container-width{
 div.col-27-5{
     width: 27.5%;
 }
+div.col-margin{
+    margin-right: 3%; 
+}

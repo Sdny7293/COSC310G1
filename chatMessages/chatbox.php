@@ -18,7 +18,7 @@
             <div class="col-4 border col-27-5">
                 Summary of messages
             </div>
-            <div class="col border">
+            <div class="col border col-margin">
                 <div class="row border m-auto" id="menu">
                     <div class="col text-start border">
                         <div class="row">
