@@ -7,3 +7,29 @@ div.col-27-5{
 div.col-margin{
     margin-right: 3%; 
 }
+#header-profile-pic{
+    padding-top: 0.1em;
+    margin-left: 0em;
+    width: 95px;
+    height: 95px;
+}
+#header-name{
+    padding-left: 0.7em;
+    margin-bottom: 0;
+    line-height: 1.2em;
+}
+#header-bio{
+    padding-left: 0.8em;
+    padding-top: 0;
+}
+#message-sent-date{
+    width: 100%; 
+    text-align: center; 
+    height: 14px;
+    border-bottom: 1px solid rgba(220, 220, 220, 0.589); 
+    margin: 10px 0 20px; 
+}
+#msg-date{
+    background-color: white; 
+    padding:0 10px;
+}
