@@ -50,3 +50,6 @@ div.col-margin{
     border-radius: 0;
     border-top: 2px solid gainsboro;
 }
+#msg-summary-tab{
+    border-bottom: 1px solid gray;
+}

@@ -15,14 +15,16 @@
 </head>
 
 <body>
-    <header>
-        <?php include '../navBar/navBar.php' ?>
-    </header>
+    <!-- <header>
+        <?php //include '../navBar/navBar.php' ?>
+    </header> -->
 
     <div class="m-auto container-width border border-secondary">
         <div class="d-flex m-auto border border-primary vh-100">
-            <div class="col-4 border col-27-5">
-                Messaging
+            <div id = "msg-summary-tab" class="col-4 col-27-5 mb-0 fs-6 helv-bold ps-3 pt-2 border-bottom">
+                <div class = "row border-bottom m-auto">
+                    Messaging
+                </div>
             </div>
             <div class="col border col-margin position-relative">
                 <!-- Message header -->
