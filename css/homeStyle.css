@@ -1,0 +1,83 @@
+.card1{
+    display:inline-block;
+    transform: translateY(-210%);
+    margin-left: 120px;
+}
+.card2{
+    display:inline-block;
+    transform: translateX(50%);
+}
+.card3{
+    display:inline-block; 
+    transform: translateY(-460%);
+    margin-left: 320px;
+    
+}
+.card4{
+    display:inline-block; 
+    transform: translateY(-120%);
+    margin-left: -300px;
+
+}
+#contents{
+    display: block;
+    text-align: center;
+}
+#navbar{
+    transform: translateX(30%);
+}
+span.Column1{
+    display: inline-block;
+}
+span.Column2{
+    display: inline-block;
+}
+span.Column3{
+    display: inline-block;
+    transform: translateX(300%);
+}
+span.Column4{
+    display: inline-block;
+    transform: translateX(400%);
+}
+span.Column5{
+    display: inline-block;
+    transform: translateX(500%);
+}
+span.Column6{
+    display: inline-block;
+    transform: translateX(600%);;
+}
+span.Column7{
+    display: inline-block;
+    transform: translateX(700%);
+}
+span.Column8{
+    display: inline-block;
+    transform: translateX(1050%);
+}
+span.Column9{
+    display: inline-block;
+    transform: translateX(150%);
+    
+}
+#like{
+    display:inline-block;
+    transform: translateX(200%);
+}
+#comment{
+    display:inline-block;
+    transform: translateX(800%);
+}
+#share{
+    display:inline-block;
+    transform: translateX(1400%);
+}
+
+#newsfeed{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#blackberryPhone{
+    transform: translateX(10%);
+}
