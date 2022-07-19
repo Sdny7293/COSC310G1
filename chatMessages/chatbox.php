@@ -21,9 +21,39 @@
 
     <div class="m-auto container-width border border-secondary">
         <div class="d-flex m-auto border border-primary vh-100">
-            <div id = "msg-summary-tab" class="col-4 col-27-5 mb-0 fs-6 helv-bold ps-3 pt-2 border-bottom">
-                <div class = "row border-bottom m-auto">
+            <div id = "msg-summary-tab" class="col-4 col-27-5 mb-0 helv-bold border-bottom">
+                <div class = "row border-bottom m-auto fs-5-5 ps-3 pt-2 pb-2">
                     Messaging
+                </div>
+                <div class = "row m-2">
+                    <input id = "search-msg-bar" class = "helv-reg" type = "text" placeholder = "Search Messages">
+                </div>
+                <!-- individual senders -->
+                <div class = "row m-auto">
+                    <div id = "msg-summary-profpic" class = "col-3 ps-0 me-2 align-self-center">
+                        <img class = "m-auto" id="msg-summary-profile-pic" src="../chatMessages/images/profilepic.jpg" alt="profile picture" />
+                    </div>
+                    <div id = "msg-summary-info" class = "col pt-2 ps-0 pe-1 border-bottom">
+                        <div class = "row helv-reg m-auto fs-5-5">
+                            <span class = "ps-0 pe-0">Donald Smith<span class = "ps-2 pe-1 me-0 float-end fs-6">10:56 PM</span></span>
+                        </div>
+                        <div class = "row m-auto helv-reg fs-6">
+                            Donald: Hello
+                        </div>
+                    </div>
+                </div>
+                <div class = "row m-auto">
+                    <div id = "msg-summary-profpic" class = "col-3 ps-0 me-2 align-self-center">
+                        <img class = "m-auto" id="msg-summary-profile-pic" src="../chatMessages/images/profilepic.jpg" alt="profile picture" />
+                    </div>
+                    <div id = "msg-summary-info" class = "col pt-2 ps-0 pe-1 border-bottom">
+                        <div class = "row helv-reg m-auto fs-5-5">
+                            <span class = "ps-0 pe-0">Bob Lee<span class = "ps-2 pe-1 me-0 float-end fs-6">July 12</span></span>
+                        </div>
+                        <div class = "row m-auto helv-reg fs-6 overflow-hidden height">
+                            You: Bob you are so cool!
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col border col-margin position-relative">
