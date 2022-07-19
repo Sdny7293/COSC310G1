@@ -63,7 +63,22 @@
                             <div class="col pt-1">
                                 <p class="helv-bold fs-7 mb-0 ms-2">Donald Smith<span class="text-muted fs-8 helv-reg"> • 10:02 AM</span></p>
                                 <!-- message content -->
-                                <p class="helv-reg fs-7 ms-2">Message content</p>
+                                <p class="helv-reg fs-7 ms-2">Hello there Dave, how are you?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="chat-messages">
+                        <!-- <div id="message-sent-date">
+                            <span id="msg-date" class="fs-9 helv-bold text-muted">TODAY</span>
+                        </div> -->
+                        <div id="message-sender" class="row">
+                            <div class="col-1 me-3 ps-3 pe-0">
+                                <img id="msg-profile-pic" src="../chatMessages/images/profilepic.jpg" alt="profile picture" />
+                            </div>
+                            <div class="col pt-1">
+                                <p class="helv-bold fs-7 mb-0 ms-2">Dave Charles<span class="text-muted fs-8 helv-reg"> • 10:23 AM</span></p>
+                                <!-- message content -->
+                                <p class="helv-reg fs-7 ms-2">Hello Donald, I am good!</p>
                             </div>
                         </div>
                     </div>
