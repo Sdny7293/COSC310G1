@@ -1,7 +1,6 @@
 <?php
-$key=md5("cosc310");
 $username=base64_encode($_GET['username']);
-$password=base64_encode($_GET['password']);
+$password=md5($_GET['password']);
 $email=base64_encode($_GET['email']);
 $bdhost="103.139.1.103";
 $dbname="cosc310";

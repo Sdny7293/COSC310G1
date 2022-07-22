@@ -8,7 +8,7 @@
     <body>
 		<div ng-cloak ng-app="myApp" style="margin-top: 60px;">
 			<form name="myForm" action="signup.php" ng-controller="formController" class="container form-horizontal">
-				<h1 style="margin-left: 330px;">Please complete registration...</h1>
+				<h1 align='center'>Sign Up</h1>
 				<p>&nbsp;</p>
 				<div class="form-group has-feedback" ng-class="{'has-error':myForm.username.$dirty && myForm.username.$invalid}">
 					<label class="col-sm-4 control-label">username</label>
@@ -71,7 +71,7 @@
 			angular.module('myApp', [])
 				.controller('formController', ['$scope', function($scope) {
 					$scope.confirm = function() {
-						alert("form submit")
+						//alert("form submit")
 					}
 					$scope.reset = function() {
 						$scope.myForm.$setPristine();
