@@ -98,6 +98,7 @@
                                 <p class="helv-reg fs-7 ms-2">Message content</p>
                             </div>
                         </div>
+                        <div id = "msg"></div>
                     </div>
                 </div>
                 <!-- Textbox to send message -->
