@@ -50,3 +50,16 @@ div.col-margin{
     border-radius: 0;
     border-top: 2px solid gainsboro;
 }
+#msg-summary-tab{
+    border-bottom: 1px solid gray;
+}
+#msg-summary-profile-pic{
+    margin-top: 0;
+    width: 70px;
+    height: 70px;
+}
+#search-msg-bar{
+    background-color: rgb(231, 232, 239);
+    border-radius: 0.2em;
+    border: none;
+}
