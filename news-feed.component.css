@@ -1,0 +1,140 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+/* You can add global styles to this file, and also import other style files */
+.card1{
+  display:inline-block;
+  transform: translateY(-50em);
+  margin-left: 120px;
+}
+.card2{
+  display:inline-block;
+  transform: translateY(1em);
+  margin-left: 10em;
+}
+
+.card3{
+  display:inline-block;
+  transform: translateY(-75em);
+  margin-left: 80em;
+
+}
+.card4{
+  transform: translateY(-70em);
+  margin-left: 80em;
+}
+
+#contents{
+  display: block;
+  text-align: center;
+}
+
+span.Column1{
+  display: inline-block;
+  transform: translateX(3em);
+}
+span.Column2{
+  display: inline-block;
+  transform: translateX(5em);
+}
+span.Column3{
+  display: inline-block;
+  transform: translateX(8em);
+}
+span.Column4{
+  display: inline-block;
+  transform: translateX(10em);
+}
+span.Column5{
+  display: inline-block;
+  transform: translateX(12em);
+}
+span.Column6{
+  display: inline-block;
+  transform: translateX(14em);;
+}
+span.Column7{
+  display: inline-block;
+  transform: translateX(16em);
+}
+span.Column8{
+  display: inline-block;
+  transform: translateX(30em);
+}
+span.Column9{
+  display: inline-block;
+  transform: translateX(33em);
+
+}
+span.Column10{
+  display: inline-block;
+  transform: translateX(36em);
+
+}
+#like{
+  display:inline-block;
+  transform: translateX(200%);
+}
+#comment{
+  display:inline-block;
+  transform: translateX(800%);
+}
+#share{
+  display:inline-block;
+  transform: translateX(1400%);
+}
+
+#newsfeed{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#blackberryPhone{
+  transform: translateX(10%);
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+#like{
+  margin-left: 10em;
+  transform: translateY(-20em);
+}
+
+.color{
+
+  color:blue;
+}
+.color1{
+
+  color: black;
+}
+
+#coun{
+  margin-left: 1em;
+border-color: blue;
+}
+
+p{
+  display: inline-block;
+}
+mat-card,
+textarea{
+  width:50%;
+}
+
+
+#he{
+  margin-left: 2em;
+}
+
+mat-expansion-panel{
+  display: block;
+  width: 20rem;
+  transform: translateY(-3em);
+  margin-left: 6em;
+
+}
+
+mat-expansion-panel-header{
+  align-content: center;
+}
