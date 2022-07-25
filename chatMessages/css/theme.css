@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "Helvetica-regular";
+    src: url("/COSC310G1/font/Helvetica.ttf");
+}
+@font-face {
+    font-family: "Helvetica-bold";
+    src: url("/COSC310G1/font/Helvetica-Bold.ttf");
+}
+.helv-bold{
+    font-family: "Helvetica-bold";
+}
+.helv-reg{
+    font-family: "Helvetica-regular";
+}
+.fs-5-5{
+    font-size: 1.05em;
+}
+.fs-7{
+    font-size: 0.9em;
+}
+.fs-8{
+    font-size: 0.8em;
+}
+.fs-9{
+    font-size: 0.75em;
+}
+/* 
+p.height{
+    height: 1.5em;
+}
+ */
+.height{
+    height: 1.5em;
+}
