@@ -15,14 +15,15 @@
 </head>
 
 <body>
+    <?php include "../navBar/navBar.php"?>
     <div class="m-auto container w-50 rounded-2 border border-secondary">
         <div class = "row pt-2 px-1 border-bottom">
             <div class = "col">
                 <p class = "mb-2">Invitations</p>
             </div>
-            <div class = "col">
+            <!-- <div class = "col">
                 <p class = "float-end mb-1">Manage</p>
-            </div>
+            </div> -->
         </div>
         <div class = "row">
             <div class = "col-2 px-0">
@@ -38,6 +39,9 @@
             <div id = "my-network-accept" class = "col-2 align-self-center">
                 <p class = "my-0">Accept</p>
             </div>
+            <!-- <div>
+                <p>Sam's request has been removed</p>
+            </div> -->
         </div>
     </div>
 
