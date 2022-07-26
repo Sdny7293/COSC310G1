@@ -118,7 +118,7 @@
                 <!-- Textbox to send message -->
                 <div ng-controller="GetRequestController" class="position-absolute bottom-0 start-50 translate-middle-x w-100">
                     <textarea id="msg-textarea" ng-model="msg" class="p-2 mb-2 form-control" name="usermsg" type="text" id="usermsg" placeholder="Write a message..." rows="3"></textarea>
-                    <button id="send" ng-click='getEcho()' type="button" class="btn btn-primary float-end rounded-5 me-2">Send</button>
+                    <button id="send" ng-click='sendMsg()' type="button" class="btn btn-primary float-end rounded-5 me-2">Send</button>
                 </div>
             </div>
             <div class="col-27-5 border">
@@ -130,13 +130,13 @@
     <!-- Script to send a message -->
     <script>
 		function GetRequestController($scope, $http) {
-			$scope.getEcho = function() {
+			$scope.sendMsg = function() {
 				//create a http connection to send message to processRequest.php
-				$http.get('processRequest.php', {
-					//params contains the "message"
+				$http.get('../backend/messageController.php', { ///EchoServlet/echoserve will be my php file
+					//contains the "message"
 					params: {
 								//parameters to be passed to php
-								test: $scope.msg, 	//key is echo1, value is $scope.echo1. The $scope.echo1 is from line 8's user input
+								msg_content: $scope.msg, 	//key is msg_content, value is $scope.msg. The $scope.msg_content is from line 118's user input
 								// echo2: $scope.echo2
 							}
 						}
