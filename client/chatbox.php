@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <!-- Chat history -->
-                <div id="chatbox">
+                <div id="chatbox" ng-controller = "GetRequestController" ng-init = "displayMsg()" ng-repeat = "message in messages">
                     <!-- Proifile header -->
                     <div id="message-sender-profile">
                         <img id="header-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
@@ -114,6 +114,21 @@
                             </div>
                         </div>
                     </div>
+                    <div id="chat-messages">
+                        <!-- <div id="message-sent-date">
+                            <span id="msg-date" class="fs-9 helv-bold text-muted">TODAY</span>
+                        </div> -->
+                        <div id="message-sender" class="row">
+                            <div class="col-1 me-3 ps-3 pe-0">
+                                <img id="msg-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
+                            </div>
+                            <div class="col pt-1">
+                                <p class="helv-bold fs-7 mb-0 ms-2">{{x.name}}<span class="text-muted fs-8 helv-reg">{{x.time}}</span></p>
+                                <!-- message content -->
+                                <p class="helv-reg fs-7 ms-2">{{x.content}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Textbox to send message -->
                 <div ng-controller="GetRequestController" class="position-absolute bottom-0 start-50 translate-middle-x w-100">
@@ -147,6 +162,11 @@
 					.error(function(data, status, headers, config) {
 						alert(data)
 					});
+			};
+            $scope.displayMsg = function($scope) {
+				$http.get('../backend/messageController.php').then(function(response){
+                    $scope.messages = response.data;
+                });
 			};
 		}
 	</script>

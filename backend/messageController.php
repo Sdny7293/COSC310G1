@@ -8,9 +8,9 @@ $msg_content = $_REQUEST['msg_content']; //Store the key (msg_content)(in square
 $time_sent = date("H:i:s");
 $date_sent = date("M j, Y");
 
-$obj = new MessageController;   //Create a new message controller object
+$new_message = new MessageController;   //Create a new message controller object
 $msgObj = new Message($msg_content, $time_sent, $date_sent);    //Create a new message object
-$obj->insertMsg($msgObj);
+$new_message->insertMsg($msgObj);
 echo $msg_content; //test to see what has been sent to the database
 
 class MessageController {
@@ -33,14 +33,28 @@ class MessageController {
     }
     
     //Insert the newly sent message into database - insertOne is a built in function like insertMany
-    function insertMsg($obj) {  
+    function insertMsg($new_message) {  
         //insert into the collection called "messages"
         $this->collection = $this->db->messages;
         $insertOneResult = $this->collection->insertOne([
-                               'content' => $obj->getContent(),
-                               'time_sent' => $obj->getTimeSent(),
-                               'date_sent' => $obj->getDateSent()
+                               'content' => $new_message->getContent(),
+                               'time_sent' => $new_message->getTimeSent(),
+                               'date_sent' => $new_message->getDateSent()
                             ]);
+    }
+    function displayMsg($obj) {  
+        //insert into the collection called "messages"
+        $this->collection = $this->db->messages;
+        $cursor = $this->collection->find([
+            'content' => "wowowoowowow!"
+        ]);
+        foreach($cursor as $messages) {  //every row has a record. Imagine looking at every row and you have a mouse cursor pointing to current record
+            $msg_content = $messages['content'];
+            $msg_time = $messages['time_sent'];
+            $msg_date = $messages['date'];
+            var_dump($messages);
+            echo json_encode($msg_time);
+        };
     }
     //create one class for one obj, no need functions (except getters and setters) just attributes
 };

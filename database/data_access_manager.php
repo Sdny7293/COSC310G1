@@ -4,7 +4,6 @@ class DataAccessController {
     //declare vars
     private $host;
     private $port;
-   
     private $client;
     private $db;
 
@@ -14,13 +13,14 @@ class DataAccessController {
     { //'localhost', '27017'
         $this->host = $host;
         $this->port = $port;
-
         $this->client = new MongoDB\Client("mongodb://" . $this->host . ":" . $this->port);
+        $this->db = $this->client -> linkedin_project;
     }
 
     //insert function template
     //insertOne is a built in function like insertMany
     function insertXXX($obj) {
+        $this->collection = $this->db->messages;
         $insertOneResult = $collection->insertOne([
                                'username' => $obj->a(),
                                'email' => $obj->b(),
