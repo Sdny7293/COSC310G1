@@ -1,17 +1,7 @@
 <?php
 require_once '../vendor/autoload.php'; //like import in java
 require_once 'message.php'; //to include other files
-date_default_timezone_set("US/Pacific");
-
-//read all the data sent from browser, from chatbox.php's chat box
-$msg_content = $_REQUEST['msg_content']; //Store the key (msg_content)(in square bracket) into any variable name (In this called also called $msg_content)
-$time_sent = date("H:i:s");
-$date_sent = date("M j, Y");
-
-$new_message = new MessageController;   //Create a new message controller object
-$msgObj = new Message($msg_content, $time_sent, $date_sent);    //Create a new message object
-$new_message->insertMsg($msgObj);
-echo $msg_content; //test to see what has been sent to the database
+date_default_timezone_set("US/Pacific"); //set default time zone to be in PST
 
 class MessageController {
     //declare variables
@@ -27,7 +17,7 @@ class MessageController {
         //$this means you are using the obj variable. Need "this" b/c we are creating obj.
         $this->host = $host;
         $this->port = $port;
-        $this->client = new MongoDB\Client("mongodb://" . $this->host . ":" . $this->port);
+        $this->client = new MongoDB\Client("mongodb://cosc310:Cosc310g1linkedinMock@" . $this->host . ":" . $this->port);
         //will insert into the DB mentioned below, in this case it's 'linkedin_project'
         $this->db = $this->client -> linkedin_project;
     }
@@ -39,22 +29,32 @@ class MessageController {
         $insertOneResult = $this->collection->insertOne([
                                'content' => $new_message->getContent(),
                                'time_sent' => $new_message->getTimeSent(),
-                               'date_sent' => $new_message->getDateSent()
+                               'date_sent' => $new_message->getDateSent(),
+                               'sender_id' => $new_message->getSenderId(),
+                               'receiver_id' => $new_message->getReceiverId()
                             ]);
     }
+
     function displayMsg($obj) {  
+
+        $all_msg_array = array();
         //insert into the collection called "messages"
         $this->collection = $this->db->messages;
         $cursor = $this->collection->find([
-            'content' => "wowowoowowow!"
+            'sender_id' => "sender", //$obj->sender_id,
+            // 'receiver_id' => $obj->receiver_id,
         ]);
+
         foreach($cursor as $messages) {  //every row has a record. Imagine looking at every row and you have a mouse cursor pointing to current record
-            $msg_content = $messages['content'];
-            $msg_time = $messages['time_sent'];
-            $msg_date = $messages['date'];
-            var_dump($messages);
-            echo json_encode($msg_time);
+            $msg_array = array();
+            $msg_array["content"] = $messages['content'];
+            $msg_array["time_sent"] = $messages['time_sent'];
+            $msg_array["date_sent"] = $messages['date_sent'];
+            $msg_array["sender_id"] = $messages["sender_id"];
+            $msg_array["receiver_id"] = $messages["receiver_id"];
+            $all_msg_array[] = $msg_array;
         };
+        return $all_msg_array;
     }
     //create one class for one obj, no need functions (except getters and setters) just attributes
 };
