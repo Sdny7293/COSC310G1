@@ -30,20 +30,22 @@
                 <input id="search-msg-bar" class="helv-reg w-100" type="text" placeholder="Search Messages">
             </div>
             <!-- individual message summaries -->
-            <div ng-repeat="message in messages" class="d-flex flex-row overflow-auto">
-                <div id="msg-summary-profpic">
-                    <img id="msg-summary-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
-                </div>
-                <div id="msg-summary-info" class="d-flex flex-column flex-grow-1 border-bottom">
-                    <div class="helv-reg fs-5-5">
-                        <span class="ps-0 pe-0">{{message.sender}}</span>
+            <div class = "overflow-auto">
+                <div ng-repeat="message in messages" class="d-flex flex-row">
+                    <div id="msg-summary-profpic">
+                        <img id="msg-summary-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
                     </div>
-                    <div class="helv-reg fs-6">
-                        Donald: Hello
+                    <div id="msg-summary-info" class="d-flex flex-column flex-grow-1 border-bottom">
+                        <div class="helv-reg fs-5-5">
+                            <span class="ps-0 pe-0">{{message.sender}}</span>
+                        </div>
+                        <div class="helv-reg fs-6">
+                            Donald: Hello
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <p class="fs-6">10:56 PM</p>
+                    <div>
+                        <p class="fs-6">10:56 PM</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,7 +104,7 @@
             </div>
         </div>
         <!-- Right tab column -->
-        <div class="border">
+        <div class="border flex-fill">
             Right Tab
         </div>
     </div>
