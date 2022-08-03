@@ -34,9 +34,7 @@ class MessageController {
                                'receiver_id' => $new_message->getReceiverId()
                             ]);
     }
-
     function displayMsg($obj) {  
-
         $all_msg_array = array();
         //insert into the collection called "messages"
         $this->collection = $this->db->messages;

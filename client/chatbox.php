@@ -18,7 +18,7 @@
     <div class="d-flex h-10 w-100 mx-auto">
         <?php include '../navBar/navBar.php' ?>
     </div>
-    <div class="mx-auto d-flex flex-row border border-warning h-90 container-width"> 
+    <div class="mx-auto d-flex flex-row border border-warning h-90 container-width">
         <!-- Message summary column -->
         <div id="msg-summary-tab" class="col-27-5 helv-bold d-flex flex-column">
             <!-- Messages header -->
@@ -30,7 +30,7 @@
                 <input id="search-msg-bar" class="helv-reg w-100" type="text" placeholder="Search Messages">
             </div>
             <!-- individual message summaries -->
-            <div class = "overflow-auto">
+            <div class="overflow-auto">
                 <div ng-repeat="message in messages" class="d-flex flex-row">
                     <div id="msg-summary-profpic">
                         <img id="msg-summary-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
@@ -88,7 +88,7 @@
                             <img id="msg-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
                         </div>
                         <!-- message content -->
-                        <div class = "d-flex flex-column">
+                        <div class="d-flex flex-column">
                             <div class="pt-1">
                                 <p class="helv-bold fs-7 mb-0 ms-2">{{message.sender}}<span class="text-muted fs-8 helv-reg"> • {{message.time_sent}}</span></p>
                                 <p class="helv-reg fs-7 ms-2">{{message.message}}</p>
@@ -99,8 +99,8 @@
             </div>
             <!-- Textbox to send message -->
             <div class="w-100">
-                    <textarea id="msg-textarea" ng-model="msg" class="p-2 mb-2 form-control" name="usermsg" type="text" id="usermsg" placeholder="Write a message..." rows="3"></textarea>
-                    <button id="send" ng-click='sendMsg()' type="button" class="btn btn-primary float-end rounded-5 me-2">Send</button>
+                <textarea id="msg-textarea" ng-model="msg" class="p-2 mb-2 form-control" name="usermsg" type="text" id="usermsg" placeholder="Write a message..." rows="3"></textarea>
+                <button id="send" ng-click='sendMsg()' type="button" class="btn btn-primary float-end rounded-5 me-2">Send</button>
             </div>
         </div>
         <!-- Right tab column -->
@@ -112,32 +112,9 @@
     <script src="../angular.js"></script>
     <!-- Script to send a message -->
     <script>
-        var testArr = [{
-                name: 'Mary',
-                message: 'how are you Jenny?',
-                time: '10:00'
-            },
-            {
-                name: 'Jenny',
-                message: 'I am good. How about you?',
-                time: '10:01'
-            },
-            {
-                name: 'Mary',
-                message: 'Not bad.',
-                time: '10:02'
-            }
-        ];
-
         function GetRequestController($scope, $http) {
-
-            // var testFlag = false;
-            $scope.tests = testArr;
-
             var messageArr = [];
-
             $scope.messages = messageArr;
-
             $scope.getAllMessages = function() {
                 $http.get('../backend/processRequest.php', {
                         params: {
@@ -145,16 +122,12 @@
                         }
                     })
                     .success(function(data, status, headers, config) {
-                        // alert(data);
-
                         for (var i = 0; i < data.length; i++) {
                             var sender = data[i].sender_id;
                             var receiver = data[i].receiver_id;
                             var message = data[i].content;
-                            // var dateTime = data[i].date_sent + " " + data[i].time_sent;
                             var date_sent = data[i].date_sent;
                             var time_sent = data[i].time_sent;
-
                             $scope.messages.push({
                                 sender: sender,
                                 receiver: receiver,
@@ -170,14 +143,12 @@
                         alert(config)
                     });
             }
-
             $scope.sendMsg = function() {
                 $scope.sender = '<?php echo  "sender"; ?>'
                 $scope.receiver = '<?php echo  "receiver"; ?>'
                 var today = new Date();
                 var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
                 var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
-                // var dateTime = date + " " + time;
 
                 //create a http connection to send message to processRequest.php
                 $http.get('../backend/processRequest.php', { ///EchoServlet/echoserve will be my php file
@@ -190,7 +161,6 @@
                             receiver: $scope.receiver,
                             date: date,
                             time: time
-                            // dateTime: dateTime
                         }
                     })
                     .success(function(data, status, headers, config) {

@@ -35,10 +35,5 @@ class Message{
     function getDateSent(){
         return $this->date_sent;
     }
-    //need getters?
-
-    // Todo:
-    //format date and time in php first then insert it in DB
-    //When retrieving from DB then format it back to date time
 };
 ?>
