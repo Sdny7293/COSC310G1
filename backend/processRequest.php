@@ -4,10 +4,8 @@ require_once 'message.php'; //to include other files
 require_once 'messageController.php'; //to include other files
 date_default_timezone_set("US/Pacific"); //set default time zone to be in PST
 
+// Messages
 $act = $_REQUEST["act"];
-
-// echo "fx";
-
 if($act == "insertMessage") {
     $messageController = new MessageController;   //Create a new message controller object
     $msgObj = new Message($_REQUEST["msg_content"], $_REQUEST["sender"], $_REQUEST["receiver"], $_REQUEST["time"], $_REQUEST["date"]);    //Create a new message object
@@ -20,6 +18,7 @@ if($act == "insertMessage") {
     echo json_encode($messageController->displayMsg($msgObj));
 
 }
+
 
 
 

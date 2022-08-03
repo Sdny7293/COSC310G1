@@ -42,7 +42,6 @@ class MessageController {
             'sender_id' => "sender", //$obj->sender_id,
             // 'receiver_id' => $obj->receiver_id,
         ]);
-
         foreach($cursor as $messages) {  //every row has a record. Imagine looking at every row and you have a mouse cursor pointing to current record
             $msg_array = array();
             $msg_array["content"] = $messages['content'];
