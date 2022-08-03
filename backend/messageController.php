@@ -1,10 +1,10 @@
 <?php
 require_once '../vendor/autoload.php'; //like import in java
 require_once 'message.php'; //to include other files
+
 date_default_timezone_set("US/Pacific"); //set default time zone to be in PST
 
 class MessageController {
-    //declare variables
     private $host;
     private $port;
     private $db; //a var for database
