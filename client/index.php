@@ -11,7 +11,10 @@
 		</head>
 		<body>
 			
-
+<!-- TODO: -->
+<!-- Clean up paths for all images and refs -->
+<!-- Connect to DB -->
+<!-- Make page responsive -->
 
 		<ul class="list-group list-group-flush">
 			<li class="list-group-item">

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+	<!-- TODO: -->
+	<!-- Fix all paths for refs -->
     <head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
