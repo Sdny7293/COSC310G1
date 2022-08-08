@@ -1,5 +1,5 @@
 <?php
-    require("controller_admin.php");
+    require("../backend/controller_admin.php");
     session_start();
 	$log = new admin_signin_up_out();
 	$log->is_login();
