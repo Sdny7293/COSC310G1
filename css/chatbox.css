@@ -7,8 +7,8 @@ div.col-27-5{
 div.col-margin{
     margin-right: 3%; 
 }
-div.h-10 {
-    height: 8%;
+div.h-5-5 {
+    height: 5.5%;
 }
 div.h-90{
     height: 92%;
@@ -54,6 +54,10 @@ div.h-90{
 }
 #msg-summary-tab{
     border-bottom: 1px solid gray;
+    background-color: white;
+}
+#msg-history{
+    background-color: white;
 }
 #msg-summary-profile-pic{
     margin-top: 0;

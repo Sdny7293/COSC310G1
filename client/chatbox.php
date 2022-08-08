@@ -15,12 +15,12 @@
 </head>
 
 <body ng-controller="GetRequestController" ng-init="getAllMessages()" class="mx-auto d-flex flex-column vh-100">
-    <div class="d-flex h-10 w-100">
+    <div class="d-flex h-5-5 w-100 bg-white mb-4">
         <?php include 'navBar.php' ?>
     </div>
-    <div class="mx-auto d-flex flex-row border border-warning h-90 container-width"> 
+    <div class="mx-auto d-flex flex-row h-90 container-width"> 
         <!-- Message summary column -->
-        <div id="msg-summary-tab" class="col-27-5 helv-bold d-flex flex-column">
+        <div id="msg-summary-tab" class="border rounded-start col-27-5 helv-bold d-flex flex-column">
             <!-- Messages header -->
             <div class="w-100 border-bottom fs-5-5 ps-3 pt-2 pb-2">
                 Messaging
@@ -50,10 +50,10 @@
             </div>
         </div>
         <!-- Chat history column -->
-        <div class="border col-margin d-flex flex-column col-5">
+        <div id = "msg-history" class="border rounded-end col-margin d-flex flex-column col-5">
             <!-- Message header -->
-            <div class="border mx-auto d-flex flex-row w-100" id="menu">
-                <div class="border d-flex flex-column col-11">
+            <div class="mx-auto d-flex flex-row w-100 border-bottom" id="menu">
+                <div class="d-flex flex-column col-11 ps-2">
                     <div id="msg-sender-profile-name" class="helv-bold pt-1">
                         <p class="mb-0 fs-7">{{receiver}}</p>
                     </div>
@@ -65,12 +65,12 @@
                         <p class="fs-8 mb-0 text-truncate">Mechanical engineering student with a minor in computer science this is a test</p>
                     </div>
                 </div>
-                <div class="border d-flex flex-fill justify-content-center align-items-center">
+                <div class="border-start d-flex flex-fill justify-content-center align-items-center">
                     <a id="edit" href="#">edit</a>
                 </div>
             </div>
             <!-- Chat history -->
-            <div id="chatbox" class="d-flex flex-column overflow-auto border border-danger">
+            <div id="chatbox" class="d-flex flex-column overflow-auto">
                 <!-- Profile header -->
                 <div id="message-sender-profile" class="d-flex flex-column">
                     <img id="header-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
@@ -99,13 +99,13 @@
             </div>
             <!-- Textbox to send message -->
             <div class="w-100">
-                    <textarea id="msg-textarea" ng-model="msg" class="p-2 mb-2 form-control" name="usermsg" type="text" id="usermsg" placeholder="Write a message..." rows="3"></textarea>
-                    <button id="send" ng-click='sendMsg()' type="button" class="btn btn-primary float-end rounded-5 me-2">Send</button>
+                    <textarea id="msg-textarea" ng-model="msg" class="p-2 mb-2 form-control" name="usermsg" type="text" id="usermsg" placeholder="Write a message..." rows="4"></textarea>
+                    <button id="send" ng-click='sendMsg()' type="button" class="btn btn-primary float-end rounded-5 me-2 mb-4 mt-1">Send</button>
             </div>
         </div>
         <!-- Right tab column -->
-        <div class="border flex-fill">
-            Right Tab
+        <div class="flex-fill align-self-center text-center">
+            <?php include "footer.php" ?>
         </div>
     </div>
 

@@ -10,31 +10,31 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-8">
-                    <li class="nav-item">
+                    <li class="nav-item ms-2 me-2">
                         <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'home') {echo "active";}?>" aria-current="page" href="#">
                             <img src="../images/home.svg" alt="" width="25" class="mx-auto">
                             <div>Home</div>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ms-2 me-2">
                         <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'mynetwork') {echo "active";}?>" href="#">
                             <img src="../images/mynetwork.png" alt="" width="25" class="mx-auto">
                             <div>My Network</div>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ms-2 me-2">
                         <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'chatbox') {echo "active";}?>" href="#">
                             <img src="../images/message.png" alt="" width="25" class="mx-auto">
                             <div>Messaging</div>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ms-2 me-2">
                         <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'notifications') {echo "active";}?>" href="#">
                             <img src="../images/notification.png" alt="" width="25" class="mx-auto">
                             <div>Notifications</div>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item ms-2 me-2 dropdown">
                         <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'user_profile') {echo "active";}?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="../images/me.png" alt="" width="25" class="mx-auto">
                             <div class = "dropdown-toggle">Me</div>
