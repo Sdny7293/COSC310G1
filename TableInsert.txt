@@ -1,0 +1,23 @@
+create table newspost(
+	Feed varchar(10000),
+	Followers Integer,
+	ID Integer,
+	Likes Integer,
+	Logo varchar(300),
+	Name varchar(300),
+	NewsPic varchar(300)
+	);
+
+create table comments(
+	comments varchar(1000),
+	ID Integer
+);
+
+Insert into newspost (ID,Feed,Followers,Likes,Name,NewsPic,Logo) values ('1',"Without it we wouldn't have the growing selection of electric vehicles we have today, yet the 2022 Tesla Model S remains one of the most compelling and desirable options in that growing market segment. It also earns a spot on our 2022 Editors' Choice list. With up to 412 miles of estimated driving range—depending upon model—the S can easily be used for long drives,and the 1020-hp Plaid version can deliver supercar acceleration while seating four adults.The Model S is also practical, with a large rear cargo area and a secondary front-trunk for extra space.New entrants in the luxury EV sedan category includes the Porsche Taycan and the Audi e-tron GT,both of which challenge the Model S in terms of performance and comfort, but its superior range andavailable semi-autonomous driving technology continue to draw consumers to this Tesla.",'20','2','Tesla',"./images/modelS.jpg","./images/tesla.jpg");
+Insert into newspost (ID,Feed,Followers,Likes,Name,NewsPic,Logo) values ('2',"On paper or in pixels, the Damon HyperSport is the finest electric motorcycle yet. Two hundred miles per hour, 200 hp and a
+          claimed 200-mile range will do that. No electric bike in current production can touch those figures. Of course, right now
+          neither can anyone who’s put in a preorder for a Damon.
+           The tech world is defined by bluster before results. Assuming Vancouver, Canada-based Damon can deliver, the HyperSport will be
+           paired with the HyperFighter, Damon’s latest potential streetbike. Up first is the $35,000 (or so) limited-edition HyperFighter
+           Colossus; Damon claims that bike will be followed by two future HyperFighter Unlimited models, trimmed of the Colossus name and about
+           $10,000 from the sticker. Only 100 Colossuses are planned for production.",'2900','12','Damon','./images/motorcycle.jpg','./images/damon.jpg');

@@ -117,25 +117,12 @@ border-color: blue;
 p{
   display: inline-block;
 }
-mat-card,
-textarea{
-  width:50%;
-}
-
 
 #he{
   margin-left: 2em;
 }
 
-mat-expansion-panel{
-  display: block;
-  width: 20rem;
-  transform: translateY(-3em);
-  margin-left: 6em;
-
+#demo{
+  align-items: center;
 }
 
-mat-expansion-panel-header
-{
-  align-content: center;
-}
