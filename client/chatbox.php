@@ -16,7 +16,7 @@
 
 <body ng-controller="GetRequestController" ng-init="getAllMessages()" class="mx-auto d-flex flex-column vh-100">
     <div class="d-flex h-10 w-100 mx-auto">
-        <?php include '../navBar/navBar.php' ?>
+        <?php include 'navBar.php' ?>
     </div>
     <div class="mx-auto d-flex flex-row border border-warning h-90 container-width"> 
         <!-- Message summary column -->
@@ -149,7 +149,7 @@
 
             $scope.sendMsg = function() {
                 $scope.sender = '<?php echo  "sender"; ?>'
-                $scope.receiver = '<?php echo  "receiver"; ?>'
+                $scope.receiver = '<?php echo  "John"; ?>'
                 var today = new Date();
                 var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
                 var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
