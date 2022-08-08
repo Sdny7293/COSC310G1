@@ -15,7 +15,7 @@
 </head>
 
 <body ng-controller="GetRequestController" ng-init="getAllMessages()" class="mx-auto d-flex flex-column vh-100">
-    <div class="d-flex h-10 w-100 mx-auto">
+    <div class="d-flex h-10 w-100">
         <?php include 'navBar.php' ?>
     </div>
     <div class="mx-auto d-flex flex-row border border-warning h-90 container-width"> 
