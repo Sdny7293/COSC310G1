@@ -139,4 +139,44 @@ class profile{
             </script>");
     }
 }
+class action{
+    public static function get_post($pid){
+        $conn= mysqli_connect("103.139.1.103", "COSC310", "cosc310", "cosc310");
+        if (!$conn) {
+            die("Connection Fail: " . mysqli_connect_error());
+        }
+        $sql_read = "SELECT * FROM cosc310_post WHERE post_id='$pid'";
+        $result_read = mysqli_query($conn, $sql_read);
+        $row = mysqli_fetch_assoc($result_read);
+        $num_like = $row['num_like'];
+        $poster_id = $row['uid'];
+        $pic = $row['pic'];
+        $description = $row['description'];
+        $title = $row['title'];
+        $post_id = $row['pid'];
+        echo "
+        // have youe html code here.
+        ";
+    }
+    public static function like_post($pid){
+        $conn= mysqli_connect("103.139.1.103", "COSC310", "cosc310", "cosc310");
+        if (!$conn) {
+            die("Connection Fail: " . mysqli_connect_error());
+        }
+        $uid = $_SESSION['uid'];
+        //add if statement to check if already liked this post.
+        
+    }
+    public static function follow(){
+        $conn= mysqli_connect("103.139.1.103", "COSC310", "cosc310", "cosc310");
+        if (!$conn) {
+            die("Connection Fail: " . mysqli_connect_error());
+        }
+        $uid = $_SESSION['uid'];
+        $sql_read = "SELECT * FROM cosc310_follow WHERE follower='$uid'";
+        $result_read = mysqli_query($conn, $sql_read);
+        $row = mysqli_fetch_assoc($result_read);
+        //do whatever you want with this $row, it is a table contains all users that current user follows.
+    }
+}
 ?>

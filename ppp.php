@@ -1,12 +1,9 @@
 <?php
-if (!isset($_COOKIE['username'])) {
-    exit("<script>
-        alert('Please Login');
-        location.href='signin.html';
-        </script>");
-}
+require("controller_user.php");
+session_start();
+$log = new signin_up_out();
+$log -> is_login();
 ?>
-
 <!DOCTYPE html>
 	<html lang="en">
 		<head>
@@ -58,37 +55,38 @@ if (!isset($_COOKIE['username'])) {
 			</li>
 		</ul>
 		<br>
+		<style>
+		    div {
+                border: 1px;
+                width: 60%;
+                margin: 20px auto;
+            }
+		</style>
 		<div class="card1" style="width: 60rem; height: 30rem;" id="profile_top">
 				<ul class="list-group list-group-flush">
 						<li class="list-group-item">
-							<img  id="picture" src="<?php
-                                                    if($_COOKIE['pic']=='null'){
-                                                        echo './user/picture/default.png';
-                                                    }
-                                                    else{
-                                                        echo $_COOKIE['pic'];
-                                                    }?>"  width="80" height="80">
+						<img src="<?php
+                            if($_SESSION['pic']=='null'){
+                                echo './user/picture/default.png?rand='.rand();
+                            }
+                            else{
+                                echo $_SESSION['pic'].'?rand='.rand();
+                            }?>" onerror="this.src='./img/default.jpg'" border="1" width="80" height="80"/>
+                            <p></p>
+                            <input type="button" onclick="window.location.href='picture_upload.php'" value="Edit Picture">
 							<h1>Welcome,  
-							    <?php echo $_COOKIE['username']; ?>!
+							    <?php echo $_SESSION['username']; ?>!
 							</h1>
-							<h4>des:  
-							    <?php echo $_COOKIE['description']; ?>
+							<h4>Email:
+							    <?php echo " ".$_SESSION['email']; ?>
+							</h4>
+							<h4>Description:
+							    <?php echo " ".$_SESSION['description']; ?>
 							</h4>
 							<input type="button" onclick="window.location.href='edit_profile.php'" value="Edit Profile">
 						</li>
 					</ul>
 			</div>
-			<style>
-			    div {
-                    
-                    border: 1px
-                    
-                    width: 350px;
-                    
-                    margin: 20px auto;
-                    
-                }
-			</style>
 		</body>
 </html>
 
