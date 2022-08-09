@@ -14,7 +14,7 @@ $log -> is_login();
 		<link href="images/profile.png">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<script src="../js/layer.js"></script>
+		<script src="../layer.js"></script>
 		</head>
 
 		<body>
