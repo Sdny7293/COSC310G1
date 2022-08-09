@@ -16,7 +16,7 @@ class admin_signin_up_out{
         if (isset($_SESSION['id'])) {
             exit("<script>
                 alert('Already Login');
-                location.href='admin.php';
+                location.href='../client/admin.php';
                 </script>");
         }
     }
@@ -24,7 +24,7 @@ class admin_signin_up_out{
         if (!isset($_SESSION['id'])) {
             exit("<script>
                 alert('Not Login Yet');
-                location.href='admin_login.php';
+                location.href='../client/admin_login.php';
                 </script>");
         }
     }
@@ -45,10 +45,10 @@ class admin_signin_up_out{
             $result_write = mysqli_query($conn, $sql_write);
             $result_read_2 = mysqli_query($conn, $sql_read);
             if(mysqli_num_rows($result_read_2) > 0){
-                echo"<script type='text/javascript'> alert('admin created'); location='admin_login.html';</script>";
+                echo"<script type='text/javascript'> alert('admin created'); location='../client/admin_login.html';</script>";
             }
             else{
-                echo"<script type='text/javascript'> alert('fail to add user'); location='admin_add.html';</script>";
+                echo"<script type='text/javascript'> alert('fail to add user'); location='../client/admin_add.php';</script>";
             }
         }
     }
@@ -63,10 +63,10 @@ class admin_signin_up_out{
         $result_read = mysqli_query($conn, $sql_read);
         if (mysqli_num_rows($result_read) > 0) {
             $_SESSION['id']=$id;
-            echo"<script type='text/javascript'>alert('login success'); location='admin.php';</script>";
+            echo"<script type='text/javascript'>alert('login success'); location='../client/admin.php';</script>";
         }
         else {
-            echo"<script type='text/javascript'>alert('Login Fail'); location='admin_login.html';</script>";
+            echo"<script type='text/javascript'>alert('Login Fail'); location='../client/admin_login.php';</script>";
         }
     }
     public static function signout(){
@@ -75,7 +75,7 @@ class admin_signin_up_out{
             setcookie(session_name(),'',time()-3600,'/');
         }
         session_destroy();
-        echo"<script type='text/javascript'> alert('Sign Out'); location='admin_login.php';</script>";
+        echo"<script type='text/javascript'> alert('Sign Out'); location='../client/admin_login.php';</script>";
     }
 }
 class web_data{
