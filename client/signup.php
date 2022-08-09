@@ -1,5 +1,5 @@
 <?php
-    require("controller_user.php");
+    require("../backend/controller_user.php");
     session_start();
 	$log = new signin_up_out();
 	$log->not_login();

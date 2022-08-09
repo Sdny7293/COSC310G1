@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$host = "localhost";
-$database = "linkedIn";
-$user = "webuser";
-$password = "password";
+$host = "103.139.1.103";
+$database = "cosc310";
+$user = "COSC310";
+$password = "cosc310";
 
 try{
     $connection = mysqli_connect($host, $user, $password, $database);
@@ -24,7 +24,7 @@ try{
             
              }
         $_SESSION['Output1'] = $queryArray1;     
-        header("Location: homepage.component.php");
+        header("Location: ../client/homepage.component.php");
 
         if($error != null)
         {

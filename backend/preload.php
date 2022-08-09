@@ -1,10 +1,10 @@
 <?php
 
 session_start();
-$host = "localhost";
-$database = "linkedIn";
-$user = "webuser";
-$password = "password";
+$host = "103.139.1.103";
+$database = "cosc310";
+$user = "COSC310";
+$password = "cosc310";
 
 
 
@@ -38,7 +38,7 @@ try{
     
     $_SESSION['Output'] = $queryArray;
     $_SESSION['Output1'] = $queryArray1;
-   header("Location: homepage.component.php");
+   header("Location: ../client/homepage.component.php");
 }
 catch (Exception $e){
    echo ' Caught exception: '.$e->getMessage()."<br>";
@@ -49,7 +49,6 @@ catch (Exception $e){
 
    exit();
 } finally{
-//    mysqli_free_result($results);
    mysqli_close($connection);
   }
 
