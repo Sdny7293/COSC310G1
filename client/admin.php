@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-	<script src="js/angular.js"></script>
+	<script src="../js/angular.js"></script>
     <head>
         <meta charset="UTF-8">
         <title>admin</title>
