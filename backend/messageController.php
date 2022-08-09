@@ -27,13 +27,14 @@ class MessageController {
         //insert into the collection called "messages"
         $this->collection = $this->db->messages;
         $insertOneResult = $this->collection->insertOne([
-                               'content' => $new_message->getContent(),
-                               'time_sent' => $new_message->getTimeSent(),
-                               'date_sent' => $new_message->getDateSent(),
-                               'sender_id' => $new_message->getSenderId(),
-                               'receiver_id' => $new_message->getReceiverId()
-                            ]);
+            'content' => $new_message->getContent(),
+            'time_sent' => $new_message->getTimeSent(),
+            'date_sent' => $new_message->getDateSent(),
+            'sender_id' => $new_message->getSenderId(),
+            'receiver_id' => $new_message->getReceiverId()
+        ]);
     }
+
     function displayMsg($obj) {  
         $all_msg_array = array();
         //insert into the collection called "messages"
@@ -53,19 +54,28 @@ class MessageController {
         };
         return $all_msg_array;
     }
+
     function displayMsgSummary($obj) {  
         $all_msg_summary = array();
+        $msg_summary = array();
         $this->collection = $this->db->messages;
+        // List all the distinct receivers and store in the $receiver_cursor
         $receiver_cursor = $this->collection->distinct("receiver_id");
-        $receivers = array();
-        foreach($receiver_cursor as $receiver) {  
-            $receivers[] = $receiver;
-            foreach($receivers as $receiver_name)
+            // For each distinct receiver in the receiver_cursor
+            foreach($receiver_cursor as $receiver_name)
             {
-                $cursor = $this->collection->find(["receiver_id" => $receiver_name]);
+                // find the most recent message detail for that receiver
+                $cursor = $this->collection->find(
+                    [
+                        "receiver_id" => $receiver_name
+                    ],
+                    [
+                        "sort" => ['$natural' => -1],
+                        "limit" => 1
+                    ]
+                );
                 foreach($cursor as $messages)
                 {
-                    $msg_summary = array();
                     $msg_summary["content"] = $messages['content'];
                     $msg_summary["time_sent"] = $messages['time_sent'];
                     $msg_summary["date_sent"] = $messages['date_sent'];
@@ -74,11 +84,9 @@ class MessageController {
                     $all_msg_summary[] = $msg_summary;
                 }
             }
-        };
+        // return var_dump($msg_summary);
         return $all_msg_summary;
         // return $receivers;
-        // return $cursor;
     }
     //create one class for one obj, no need functions (except getters and setters) just attributes
 };
-?>

@@ -37,20 +37,20 @@
             </div>
             <!-- individual message summaries -->
             <div class = "overflow-auto">
-                <div ng-repeat="x in summary" class="d-flex flex-row border-bottom pt-2 ps-1 pb-2">
+                <div ng-click="test()" ng-repeat="message in summary" class="d-flex flex-row border-bottom pt-2 ps-1 pb-2">
                     <div id="msg-summary-profpic">
                         <img id="msg-summary-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
                     </div>
                     <div id="msg-summary-info" class="d-flex flex-column flex-grow-1">
                         <div class="helv-reg fs-5-5 pt-2">
-                            <span class="ps-0 pe-0">{{x.sender}}</span>
+                            <span class="ps-0 pe-0" ng-model="receiver_name">{{message.receiver}}</span>
                         </div>
                         <div class="helv-reg fs-6">
-                        {{x.sender}}: {{x.message}}
+                        {{message.receiver}}: {{message.content}}
                         </div>
                     </div>
                     <div>
-                        <p class="fs-7 helv-reg pt-3 pe-2">{{x.date_sent}}</p>
+                        <p class="fs-7 helv-reg pt-3 pe-2">{{message.date_sent}}</p>
                     </div>
                 </div>
             </div>
@@ -119,10 +119,14 @@
     <!-- Script to send a message -->
     <script>
         function GetRequestController($scope, $http) {
-            var messageArr = [];
-            $scope.messages = messageArr;
+            
+            $scope.test = function() {
+                alert("testing");
+            }
 
             $scope.getAllMessages = function() {
+            var messageArr = [];
+            $scope.messages = messageArr;
                 $http.get('../backend/processRequest.php', {
                         params: {
                             act: "displayMessages"
@@ -161,18 +165,17 @@
                         }
                     })
                     .success(function(data, status, headers, config) {
-                        alert(data)
                         for (var i = 0; i < data.length; i++) {
                             var sender = data[i].sender_id;
                             var receiver = data[i].receiver_id;
-                            var message = data[i].content;
+                            var content = data[i].content;
                             var date_sent = data[i].date_sent;
                             var time_sent = data[i].time_sent;
 
-                            $scope.messages.push({
+                            $scope.summary.push({
                                 sender: sender,
                                 receiver: receiver,
-                                message: message,
+                                content: content,
                                 date_sent: date_sent,
                                 time_sent: time_sent
                             });
