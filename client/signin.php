@@ -13,7 +13,7 @@
     </head>
     <body>
 		<div ng-cloak ng-app="myApp" style="margin-top: 60px;">
-			<form name="myForm" action="controller_user.php" ng-controller="formController" class="container form-horizontal">
+			<form name="myForm" action="../backend/controller_user.php" ng-controller="formController" class="container form-horizontal">
 				<h1 align='center'>Sign In</h1>
 				<p>&nbsp;</p>
 				<div class="form-group has-feedback" ng-class="{'has-error':myForm.username.$dirty && myForm.username.$invalid}">
