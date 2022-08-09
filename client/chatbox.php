@@ -37,7 +37,7 @@
             </div>
             <!-- individual message summaries -->
             <div class = "overflow-auto">
-                <div ng-click="test()" ng-repeat="message in summary" class="d-flex flex-row border-bottom pt-2 ps-1 pb-2">
+                <div ng-click="getAllMessages()" ng-repeat="message in summary" class="d-flex flex-row border-bottom pt-2 ps-1 pb-2">
                     <div id="msg-summary-profpic">
                         <img id="msg-summary-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
                     </div>
@@ -56,7 +56,7 @@
             </div>
         </div>
         <!-- Chat history column -->
-        <div id = "msg-history" ng-init="getAllMessages()" class="border rounded-end col-margin d-flex flex-column col-5">
+        <div id = "msg-history" class="border rounded-end col-margin d-flex flex-column col-5"> <!-- ng-init="getAllMessages()" -->
             <!-- Message header -->
             <div class="mx-auto d-flex flex-row w-100 border-bottom" id="menu">
                 <div class="d-flex flex-column col-11 ps-2">
