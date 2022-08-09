@@ -16,7 +16,7 @@ class signin_up_out{
         if (isset($_SESSION['uid'])) {
             exit("<script>
                 alert('Already Login');
-                location.href='ppp.php';
+                location.href='../client/ppp.php';
                 </script>");
         }
     }
@@ -24,7 +24,7 @@ class signin_up_out{
         if (!isset($_SESSION['uid'])) {
             exit("<script>
                 alert('Not Login Yet');
-                location.href='signin.php';
+                location.href='../client/signin.php';
                 </script>");
         }
     }
@@ -52,10 +52,10 @@ class signin_up_out{
             $_SESSION['email']=$email;
             $_SESSION['description']=$row['description'];
             $_SESSION['pic']=$row['picture_link'];
-            echo "<script type='text/javascript'>alert('login success'); location='ppp.php';</script>";
+            echo "<script type='text/javascript'>alert('login success'); location='../client/ppp.php';</script>";
         }
         else{
-            echo "<script type='text/javascript'>alert('Login Fail'); location='signin.php';</script>";
+            echo "<script type='text/javascript'>alert('Login Fail'); location='../client/signin.php';</script>";
         }
     }
     public static function signup($username,$email,$password){
@@ -78,10 +78,10 @@ class signin_up_out{
             $result_read_username_2 = mysqli_query($conn, $sql_read_username);
             $result_read_email_2 = mysqli_query($conn, $sql_read_email);
             if(mysqli_num_rows($result_read_username_2) > 0 && mysqli_num_rows($result_read_email_2) > 0){
-                echo"<script type='text/javascript'> alert('account created'); location='signin.php';</script>";
+                echo"<script type='text/javascript'> alert('account created'); location='../client/signin.php';</script>";
             }
             else{
-                echo"<script type='text/javascript'> alert('fail to add user'); location='signup.php';</script>";
+                echo"<script type='text/javascript'> alert('fail to add user'); location='../client/signup.php';</script>";
             }
         }
     }
@@ -91,7 +91,7 @@ class signin_up_out{
             setcookie(session_name(),'',time()-3600,'/');
         }
         session_destroy();
-        echo"<script type='text/javascript'> alert('Log Out'); location='signin.php';</script>";
+        echo"<script type='text/javascript'> alert('Log Out'); location='../client/signin.php';</script>";
     }
 }
 class profile{
@@ -125,7 +125,7 @@ class profile{
             if (mysqli_num_rows($result_read_email) > 0) {
                 exit("<script>
                     alert('email already been used');
-                    location.href='edit_profile.php';
+                    location.href='../client/edit_profile.php';
                     </script>");
             }
             mysqli_query($conn, $sql_write_email);
@@ -135,7 +135,7 @@ class profile{
         $_SESSION['description']=$new_description;
         exit("<script>
             alert('Update Success');
-            location.href='ppp.php';
+            location.href='../client/ppp.php';
             </script>");
     }
 }
