@@ -9,7 +9,7 @@ $log->is_login();
     <head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-		<script src="js/angular.js"></script>
+		<script src="../angular.js"></script>
     </head>
     <body>
 		<div ng-cloak ng-app="myApp" align="center">
