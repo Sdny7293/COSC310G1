@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html ng-app class="vh-100">
-
+<?php
+    // require("../controller_user.php");
+    // session_start();
+    // $log -> is_login();
+    // $uid = $_SESSION['uid'];
+    // echo $uid;
+?>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,13 +20,13 @@
     <link rel="stylesheet" href="../css/theme.css" />
 </head>
 
-<body ng-controller="GetRequestController" ng-init="getAllMessages()" class="mx-auto d-flex flex-column vh-100">
+<body ng-controller="GetRequestController" class="mx-auto d-flex flex-column vh-100">
     <div class="d-flex h-5-5 w-100 bg-white mb-4">
         <?php include 'navBar.php' ?>
     </div>
     <div class="mx-auto d-flex flex-row h-90 container-width"> 
         <!-- Message summary column -->
-        <div id="msg-summary-tab" class="border rounded-start col-27-5 helv-bold d-flex flex-column">
+        <div id="msg-summary-tab" ng-init = "getMsgSummary()" class="border rounded-start col-27-5 helv-bold d-flex flex-column">
             <!-- Messages header -->
             <div class="w-100 border-bottom fs-5-5 ps-3 pt-2 pb-2">
                 Messaging
@@ -31,31 +37,31 @@
             </div>
             <!-- individual message summaries -->
             <div class = "overflow-auto">
-                <div ng-repeat="message in messages" class="d-flex flex-row border-bottom pt-2 ps-1 pb-2">
+                <div ng-repeat="x in summary" class="d-flex flex-row border-bottom pt-2 ps-1 pb-2">
                     <div id="msg-summary-profpic">
                         <img id="msg-summary-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
                     </div>
                     <div id="msg-summary-info" class="d-flex flex-column flex-grow-1">
                         <div class="helv-reg fs-5-5 pt-2">
-                            <span class="ps-0 pe-0">{{message.sender}}</span>
+                            <span class="ps-0 pe-0">{{x.sender}}</span>
                         </div>
                         <div class="helv-reg fs-6">
-                        {{message.sender}}: {{message.message}}
+                        {{x.sender}}: {{x.message}}
                         </div>
                     </div>
                     <div>
-                        <p class="fs-7 helv-reg pt-3 pe-2">{{message.date_sent}}</p>
+                        <p class="fs-7 helv-reg pt-3 pe-2">{{x.date_sent}}</p>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Chat history column -->
-        <div id = "msg-history" class="border rounded-end col-margin d-flex flex-column col-5">
+        <div id = "msg-history" ng-init="getAllMessages()" class="border rounded-end col-margin d-flex flex-column col-5">
             <!-- Message header -->
             <div class="mx-auto d-flex flex-row w-100 border-bottom" id="menu">
                 <div class="d-flex flex-column col-11 ps-2">
                     <div id="msg-sender-profile-name" class="helv-bold pt-1">
-                        <p class="mb-0 fs-7">{{receiver}}</p>
+                        <p class="mb-0 fs-7">{{receiver_name}}</p>
                     </div>
                     <!-- If user is active then bio section shows active -->
                     <!-- <div id = "msg-user-active">
@@ -74,7 +80,7 @@
                 <!-- Profile header -->
                 <div id="message-sender-profile" class="d-flex flex-column">
                     <img id="header-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
-                    <p id="header-name" class="helv-bold">{{receiver}}<span id="connection" class="text-muted helv-reg fs-7"> • 1st</span></p>
+                    <p id="header-name" class="helv-bold">{{receiver_name}}<span id="connection" class="text-muted helv-reg fs-7"> • 1st</span></p>
                     <p id="header-bio" class="fs-7 mb-0">Student at UCLA</p>
                 </div>
                 <!-- Chat content -->
@@ -130,7 +136,7 @@
                             var date_sent = data[i].date_sent;
                             var time_sent = data[i].time_sent;
 
-                            $scope.receiver = data[i].receiver_id;
+                            $scope.receiver_name = data[i].receiver_id;
                             $scope.messages.push({
                                 sender: sender,
                                 receiver: receiver,
@@ -146,7 +152,38 @@
                         alert(config)
                     });
             }
+            $scope.getMsgSummary = function() {
+                var msgSummary = [];
+                $scope.summary = msgSummary;
+                $http.get('../backend/processRequest.php', {
+                        params: {
+                            act: "displayMsgSummary"
+                        }
+                    })
+                    .success(function(data, status, headers, config) {
+                        alert(data)
+                        for (var i = 0; i < data.length; i++) {
+                            var sender = data[i].sender_id;
+                            var receiver = data[i].receiver_id;
+                            var message = data[i].content;
+                            var date_sent = data[i].date_sent;
+                            var time_sent = data[i].time_sent;
 
+                            $scope.messages.push({
+                                sender: sender,
+                                receiver: receiver,
+                                message: message,
+                                date_sent: date_sent,
+                                time_sent: time_sent
+                            });
+                        }
+                    })
+                    .error(function(data, status, headers, config) {
+                        alert(status)
+                        alert(headers)
+                        alert(config)
+                    });
+            }
             $scope.sendMsg = function() {
                 $scope.sender = '<?php echo  "sender"; ?>'
                 $scope.receiver = '<?php echo  "John"; ?>'
