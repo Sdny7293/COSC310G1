@@ -167,16 +167,37 @@ class action{
         //add if statement to check if already liked this post.
         
     }
-    public static function follow(){
+    public static function follow_status($uid_er,$uid_ed){
         $conn= mysqli_connect("103.139.1.103", "COSC310", "cosc310", "cosc310");
         if (!$conn) {
             die("Connection Fail: " . mysqli_connect_error());
         }
         $uid = $_SESSION['uid'];
-        $sql_read = "SELECT * FROM cosc310_follow WHERE follower='$uid'";
+        $sql_read = "SELECT * FROM cosc310_follow WHERE follower='$uid_er' followed='$uid_ed'";
         $result_read = mysqli_query($conn, $sql_read);
-        $row = mysqli_fetch_assoc($result_read);
-        //do whatever you want with this $row, it is a table contains all users that current user follows.
+        if (mysqli_num_rows($result_read) > 0) {
+            echo "followed";
+        }
+        else {
+            echo "unfollowed";
+        }
+    }
+     public static function follow($uid_er,$uid_ed){
+        $conn= mysqli_connect("103.139.1.103", "COSC310", "cosc310", "cosc310");
+        if (!$conn) {
+            die("Connection Fail: " . mysqli_connect_error());
+        }
+        $uid = $_SESSION['uid'];
+        $sql_read = "SELECT * FROM cosc310_follow WHERE follower='$uid_er' followed='$uid_ed'";
+        $result_read = mysqli_query($conn, $sql_read);
+        if (mysqli_num_rows($result_read) > 0) {
+            mysqli_query($conn, "DELETE FROM cosc310_follow WHERE follower='$uid_er' followed='$uid_ed'");
+            echo "unfollowed";
+        }
+        else {
+            mysqli_query($conn,"INSERT INTO cosc310_follow (follower,followed) VALUES ('$uid_er','$uid_ed')");
+            echo "followed";
+        }
     }
 }
 ?>
