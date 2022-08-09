@@ -7,7 +7,7 @@
 ?>
 <!DOCTYPE html>
 <html>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="..css/bootstrap.min.css" />
 	<script src="../angular.js"></script>
     <head>
         <meta charset="UTF-8">
