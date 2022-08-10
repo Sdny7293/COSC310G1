@@ -22,11 +22,11 @@ $log->is_login();
     <p>Current Profile Picture：</p>
     <img src="<?php
     if($_SESSION['pic']=='null'){
-        echo '../image/user_profile_picture/default.png?rand='.rand();
+        echo '../images/user_profile_picture/default.png?rand='.rand();
     }
     else{
         echo $_SESSION['pic'].'?rand='.rand();
-    }?>" onerror="this.src='../image/user_profile_picture/default.png'" border="1" width="150" height="150"/>
+    }?>" onerror="this.src='../images/user_profile_picture/default.png'" border="1" width="150" height="150"/>
     <p>&nbsp;</p>
     Upload New Profile Picture：<input name="pic" type="file">
     <input type="submit" name="up_load" value="Upload">
@@ -71,7 +71,7 @@ if(isset($_FILES['pic']))
     {
         die('only .jpg file allowed');
     }
-    $file_name = '../image/user_profile_picture/'.$_SESSION['uid'].'.jpg';
+    $file_name = '../images/user_profile_picture/'.$_SESSION['uid'].'.jpg';
     if(!move_uploaded_file($pic_info['tmp_name'],$file_name))
     {
         exit("<script>
