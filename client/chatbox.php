@@ -33,17 +33,19 @@
             </div>
             <!-- Search message bar -->
             <div class="m-2">
-                <input id="search-msg-bar" class="helv-reg w-100 p-1" type="text" placeholder="Search Messages">
+                <form ng-submit = "searchMsg(keyword)">
+                    <input id="search-msg-bar" ng-model = "keyword" class="helv-reg w-100 p-1" type="text" placeholder="Search Messages">
+                </form>
             </div>
             <!-- individual message summaries -->
             <div class = "overflow-auto">
-                <div ng-click="getAllMessages()" ng-repeat="message in summary" class="d-flex flex-row border-bottom pt-2 ps-1 pb-2">
+                <div ng-repeat="message in summary" ng-click="getAllMessages(message.receiver)" class="d-flex flex-row border-bottom pt-2 ps-1 pb-2">
                     <div id="msg-summary-profpic">
                         <img id="msg-summary-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
                     </div>
                     <div id="msg-summary-info" class="d-flex flex-column flex-grow-1">
                         <div class="helv-reg fs-5-5 pt-2">
-                            <span class="ps-0 pe-0" ng-model="receiverId">{{message.receiver}}</span>
+                            <span class="ps-0 pe-0" ng-model = "receiverID">{{message.receiver}}</span>
                         </div>
                         <div class="helv-reg fs-6">
                         {{message.receiver}}: {{message.content}}
@@ -96,7 +98,7 @@
                         <!-- message content -->
                         <div class = "d-flex flex-column">
                             <div class="pt-1">
-                                <p class="helv-bold fs-7 mb-0 ms-2">{{message.sender}}<span class="text-muted fs-8 helv-reg"> • {{message.time_sent}}</span></p>
+                                <p class="helv-bold fs-7 mb-0 ms-2">{{message.receiver}}<span class="text-muted fs-8 helv-reg"> • {{message.time_sent}}</span></p>
                                 <p class="helv-reg fs-7 ms-2">{{message.message}}</p>
                             </div>
                         </div>
@@ -119,48 +121,10 @@
     <!-- Script to send a message -->
     <script>
         function GetRequestController($scope, $http) {
-            
-            $scope.test = function() {
-                alert("testing");
-            }
-
-            $scope.getAllMessages = function() {
-            var messageArr = [];
-            $scope.messages = messageArr;
-                $http.get('../backend/processRequest.php', {
-                        params: {
-                            act: "displayMessages",
-                            receiver_id: $scope.receiverId
-                        }
-                    })
-                    .success(function(data, status, headers, config) {
-                        // alert(data)
-                        for (var i = 0; i < data.length; i++) {
-                            var sender = data[i].sender_id;
-                            var receiver = data[i].receiver_id;
-                            var message = data[i].content;
-                            var date_sent = data[i].date_sent;
-                            var time_sent = data[i].time_sent;
-
-                            $scope.receiver_name = data[i].receiver_id;
-                            $scope.messages.push({
-                                sender: sender,
-                                receiver: receiver,
-                                message: message,
-                                date_sent: date_sent,
-                                time_sent: time_sent
-                            });
-                        }
-                    })
-                    .error(function(data, status, headers, config) {
-                        alert(status)
-                        alert(headers)
-                        alert(config)
-                    });
-            }
             $scope.getMsgSummary = function() {
                 var msgSummary = [];
                 $scope.summary = msgSummary;
+                $scope.backupSummary = msgSummary;
                 $http.get('../backend/processRequest.php', {
                         params: {
                             act: "displayMsgSummary"
@@ -173,7 +137,7 @@
                             var content = data[i].content;
                             var date_sent = data[i].date_sent;
                             var time_sent = data[i].time_sent;
-
+                           
                             $scope.summary.push({
                                 sender: sender,
                                 receiver: receiver,
@@ -189,13 +153,46 @@
                         alert(config)
                     });
             }
+            $scope.getAllMessages = function(receiver) {
+            // alert(receiver)
+            var messageArr = [];
+            $scope.messages = messageArr;
+                $http.get('../backend/processRequest.php', {
+                        params: {
+                            act: "displayMessages",
+                            receiver_id: receiver
+                        }
+                    })
+                    .success(function(data, status, headers, config) {
+                        for (var i = 0; i < data.length; i++) {
+                            var sender = data[i].sender_id;
+                            var receiver = data[i].receiver_id;
+                            var message = data[i].content;
+                            var date_sent = data[i].date_sent;
+                            var time_sent = data[i].time_sent;
+
+                            $scope.messages.push({
+                                sender: sender,
+                                receiver: receiver,
+                                message: message,
+                                date_sent: date_sent,
+                                time_sent: time_sent
+                            });
+                        }
+                    })
+                    .error(function(data, status, headers, config) {
+                        alert(data)
+                        alert(status)
+                        alert(headers)
+                        alert(config)
+                    });
+            }
             $scope.sendMsg = function() {
                 $scope.sender = '<?php echo  "sender"; ?>'
                 $scope.receiver = '<?php echo  "John"; ?>'
                 var today = new Date();
                 var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
                 var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
-                // var dateTime = date + " " + time;
 
                 //create a http connection to send message to processRequest.php
                 $http.get('../backend/processRequest.php', { ///EchoServlet/echoserve will be my php file
@@ -208,7 +205,6 @@
                             receiver: $scope.receiver,
                             date: date,
                             time: time
-                            // dateTime: dateTime
                         }
                     })
                     .success(function(data, status, headers, config) {
@@ -229,7 +225,44 @@
                         alert(config)
                     });
             };
-
+            $scope.searchMsg = function(keyword) {
+                alert(keyword)
+                $scope.summary = []
+                $http.get('../backend/processRequest.php', {
+                        params: {
+                            //parameters to be passed to php
+                            act: "searchMessage",
+                            keyword: keyword
+                        }
+                    })
+                    .success(function(data, status, headers, config) {
+                        if(keyword == "") {
+                            $scope.summary = $scope.backupSummary
+                        } 
+                        else
+                        {
+                            for (var i = 0; i < data.length; i++) {
+                                var sender = data[i].sender_id;
+                                var receiver = data[i].receiver_id;
+                                var content = data[i].content;
+                                var date_sent = data[i].date_sent;
+                                var time_sent = data[i].time_sent;
+                                $scope.summary.push({
+                                    sender: sender,
+                                    receiver: receiver,
+                                    content: content,
+                                    date_sent: date_sent,
+                                    time_sent: time_sent
+                                });
+                            }
+                        }
+                    })
+                    .error(function(data, status, headers, config) {
+                        alert(status)
+                        alert(headers)
+                        alert(config)
+                    });
+            };
         }
     </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

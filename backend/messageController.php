@@ -35,13 +35,12 @@ class MessageController {
         ]);
     }
 
-    function displayMsg($get_message) {  
+    function displayMsg($obj) {  
         $all_msg_array = array();
         //insert into the collection called "messages"
         $this->collection = $this->db->messages;
         $cursor = $this->collection->find([
-            "sender_id" => "sender"
-            // 'receiver_id' => $get_message -> getReceiverId()
+            'receiver_id' => $obj -> getReceiverId()
         ]);
         foreach($cursor as $messages) {  //every row has a record. Imagine looking at every row and you have a mouse cursor pointing to current record
             $msg_array = array();
@@ -53,6 +52,7 @@ class MessageController {
             $all_msg_array[] = $msg_array;
         };
         return $all_msg_array;
+        // return var_dump($obj->getReceiverId());
         // return $get_message -> getReceiverId();
     }
 
@@ -88,6 +88,24 @@ class MessageController {
         // return var_dump($msg_summary);
         return $all_msg_summary;
         // return $receivers;
+    }
+    function searchMsg($obj) {  
+        $this->collection = $this->db->messages;
+        $cursor = $this->collection->find(
+            [
+                'content' => $obj -> getContent()
+            ]
+        );
+        foreach($cursor as $messages)
+        {
+            $msg_summary["content"] = $messages['content'];
+            $msg_summary["time_sent"] = $messages['time_sent'];
+            $msg_summary["date_sent"] = $messages['date_sent'];
+            $msg_summary["sender_id"] = $messages["sender_id"];
+            $msg_summary["receiver_id"] = $messages["receiver_id"];
+            $all_msg_summary[] = $msg_summary;
+        }
+        return $all_msg_summary;
     }
     //create one class for one obj, no need functions (except getters and setters) just attributes
 };

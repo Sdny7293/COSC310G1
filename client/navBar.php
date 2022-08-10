@@ -1,7 +1,7 @@
     <!-- Logo -->
     <!-- <img src="./../img/Logo.png" alt="logo" /> -->
     <nav class="navbar navbar-expand-lg mx-auto">
-        <div class="container-fluid">
+        <div class="container-fluid mt-2">
             <a class="navbar-brand me-5" href="#">
                 <img src="../images/linkedin.png" alt="" width="30">
             </a>

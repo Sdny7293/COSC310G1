@@ -4,7 +4,7 @@ class Message{
     //declare the variables
     private $content;   //content of the message
     private $sender_id;
-    private $receiver_id;
+    public $receiver_id;
     private $time_sent;
     private $date_sent;
     

@@ -15,9 +15,10 @@ if($act == "insertMessage")
 else if ($act == "displayMessages") 
 {
     $messageController = new MessageController;   //Create a new message controller object
-    $msgObj = new Message("msg_content", "sender_id", "receiver_id", "time_sent", "date_sent");    //Create a new message object
+    $msgObj = new Message("msg_content", "sender_id", $_REQUEST["receiver_id"], "time_sent", "date_sent");    //Create a new message object
     //here you retrieve all the messages
     echo json_encode($messageController->displayMsg($msgObj));
+    // echo $_REQUEST["receiver_id"];
 } 
 else if ($act == "displayMsgSummary") 
 {
@@ -25,6 +26,11 @@ else if ($act == "displayMsgSummary")
     $msgObj = new Message("msg_content", "sender_id", "receiver_id", "time_sent", "date_sent");    //Create a new message object
     //here you retrieve all the messages
     echo json_encode($messageController->displayMsgSummary($msgObj));
+}
+else if($act == "searchMessage"){
+    $messageController = new MessageController;   //Create a new message controller object
+    $msgObj = new Message($_REQUEST["keyword"], "sender_id", "receiver_id", "time_sent", "date_sent");    //Create a new message object
+    echo json_encode($messageController->searchMsg($msgObj));
 }
 //Notifications
 else if($act == "displayNotifications"){
