@@ -43,7 +43,7 @@
                     </div>
                     <div id="msg-summary-info" class="d-flex flex-column flex-grow-1">
                         <div class="helv-reg fs-5-5 pt-2">
-                            <span class="ps-0 pe-0" ng-model="receiver_name">{{message.receiver}}</span>
+                            <span class="ps-0 pe-0" ng-model="receiverId">{{message.receiver}}</span>
                         </div>
                         <div class="helv-reg fs-6">
                         {{message.receiver}}: {{message.content}}
@@ -129,10 +129,12 @@
             $scope.messages = messageArr;
                 $http.get('../backend/processRequest.php', {
                         params: {
-                            act: "displayMessages"
+                            act: "displayMessages",
+                            receiver_id: $scope.receiverId
                         }
                     })
                     .success(function(data, status, headers, config) {
+                        alert(data)
                         for (var i = 0; i < data.length; i++) {
                             var sender = data[i].sender_id;
                             var receiver = data[i].receiver_id;
