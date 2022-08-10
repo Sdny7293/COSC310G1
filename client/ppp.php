@@ -67,11 +67,11 @@ $log -> is_login();
 						<li class="list-group-item">
 						<img src="<?php
                             if($_SESSION['pic']=='null'){
-                                echo '../image/user_profile_picture/default.png?rand='.rand();
+                                echo '../images/user_profile_picture/default.png?rand='.rand();
                             }
                             else{
                                 echo $_SESSION['pic'].'?rand='.rand();
-                            }?>" onerror="this.src='../image/user_profile_picture/default.png'" border="1" width="80" height="80"/>
+                            }?>" onerror="this.src='../images/user_profile_picture/default.png'" border="1" width="80" height="80"/>
                             <p></p>
                             <input type="button" onclick="window.location.href='picture_upload.php'" value="Edit Picture">
 							<h1>Welcome,  
