@@ -134,7 +134,7 @@
                         }
                     })
                     .success(function(data, status, headers, config) {
-                        alert(data)
+                        // alert(data)
                         for (var i = 0; i < data.length; i++) {
                             var sender = data[i].sender_id;
                             var receiver = data[i].receiver_id;

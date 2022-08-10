@@ -40,8 +40,8 @@ class MessageController {
         //insert into the collection called "messages"
         $this->collection = $this->db->messages;
         $cursor = $this->collection->find([
-            // "sender_id" => "sender"
-            'receiver_id' => $get_message -> getReceiverId()
+            "sender_id" => "sender"
+            // 'receiver_id' => $get_message -> getReceiverId()
         ]);
         foreach($cursor as $messages) {  //every row has a record. Imagine looking at every row and you have a mouse cursor pointing to current record
             $msg_array = array();
@@ -52,8 +52,8 @@ class MessageController {
             $msg_array["receiver_id"] = $messages["receiver_id"];
             $all_msg_array[] = $msg_array;
         };
-        // return $all_msg_array;
-        return $get_message -> getReceiverId();
+        return $all_msg_array;
+        // return $get_message -> getReceiverId();
     }
 
     function displayMsgSummary($obj) {  
