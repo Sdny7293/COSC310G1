@@ -11,25 +11,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-8">
                     <li class="nav-item ms-2 me-2">
-                        <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'home') {echo "active";}?>" aria-current="page" href="#">
+                        <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'home') {echo "active";}?>" aria-current="page" href="../backend/preload.php">
                             <img src="../images/home.svg" alt="" width="25" class="mx-auto">
                             <div>Home</div>
                         </a>
                     </li>
                     <li class="nav-item ms-2 me-2">
-                        <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'mynetwork') {echo "active";}?>" href="#">
+                        <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'mynetwork') {echo "active";}?>" href="mynetwork.php">
                             <img src="../images/mynetwork.png" alt="" width="25" class="mx-auto">
                             <div>My Network</div>
                         </a>
                     </li>
                     <li class="nav-item ms-2 me-2">
-                        <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'chatbox') {echo "active";}?>" href="#">
+                        <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'chatbox') {echo "active";}?>" href="chatbox.php">
                             <img src="../images/message.png" alt="" width="25" class="mx-auto">
                             <div>Messaging</div>
                         </a>
                     </li>
                     <li class="nav-item ms-2 me-2">
-                        <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'notifications') {echo "active";}?>" href="#">
+                        <a class="nav-link d-flex flex-column <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'notifications') {echo "active";}?>" href="notifications.php">
                             <img src="../images/notification.png" alt="" width="25" class="mx-auto">
                             <div>Notifications</div>
                         </a>
@@ -40,11 +40,11 @@
                             <div class = "dropdown-toggle">Me</div>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">View profile</a></li>
+                            <li><a class="dropdown-item" href="ppp.php">View profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            <li><a class="dropdown-item" href="signout.php">Sign out</a></li>
                         </ul>
                     </li>
                 </ul>
