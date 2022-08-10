@@ -58,12 +58,12 @@
             </div>
         </div>
         <!-- Chat history column -->
-        <div id = "msg-history" class="border rounded-end col-margin d-flex flex-column col-5"> <!-- ng-init="getAllMessages()" -->
+        <div id = "msg-history" class="border rounded-end col-margin d-flex flex-column col-5 position-relative">
             <!-- Message header -->
             <div class="mx-auto d-flex flex-row w-100 border-bottom" id="menu">
                 <div class="d-flex flex-column col-11 ps-2">
                     <div id="msg-sender-profile-name" class="helv-bold pt-1">
-                        <p class="mb-0 fs-7">{{receiver_name}}</p>
+                        <p class="mb-0 fs-7">{{receiver}}</p>
                     </div>
                     <!-- If user is active then bio section shows active -->
                     <!-- <div id = "msg-user-active">
@@ -82,7 +82,7 @@
                 <!-- Profile header -->
                 <div id="message-sender-profile" class="d-flex flex-column">
                     <img id="header-profile-pic" src="../images/profilepic.jpg" alt="profile picture" />
-                    <p id="header-name" class="helv-bold">{{receiver_name}}<span id="connection" class="text-muted helv-reg fs-7"> • 1st</span></p>
+                    <p id="header-name" class="helv-bold">{{receiver}}<span id="connection" class="text-muted helv-reg fs-7"> • 1st</span></p>
                     <p id="header-bio" class="fs-7 mb-0">Student at UCLA</p>
                 </div>
                 <!-- Chat content -->
@@ -106,7 +106,7 @@
                 </div>
             </div>
             <!-- Textbox to send message -->
-            <div class="w-100">
+            <div class="w-100 bottom-0 position-absolute">
                     <textarea id="msg-textarea" ng-model="msg" class="p-2 mb-2 form-control" name="usermsg" type="text" id="usermsg" placeholder="Write a message..." rows="4"></textarea>
                     <button id="send" ng-click='sendMsg()' type="button" class="btn btn-primary float-end rounded-5 me-2 mb-4 mt-1">Send</button>
             </div>
@@ -171,6 +171,7 @@
                             var date_sent = data[i].date_sent;
                             var time_sent = data[i].time_sent;
 
+                            $scope.receiver = data[i].receiver_id
                             $scope.messages.push({
                                 sender: sender,
                                 receiver: receiver,
@@ -189,7 +190,7 @@
             }
             $scope.sendMsg = function() {
                 $scope.sender = '<?php echo  "sender"; ?>'
-                $scope.receiver = '<?php echo  "John"; ?>'
+                $scope.receiver = '<?php echo  "You"; ?>'
                 var today = new Date();
                 var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
                 var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
